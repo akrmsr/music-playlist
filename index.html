@@ -3,28 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up to Get Started</title>
+    <title>Sign Up – My Music Playlist</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="signup-container">
-        <h1>Sign Up</h1>
+        <h1>🎶 Create Your Music Playlist</h1>
+        <p class="description">
+            WELCOME!<br>Build and manage your own interactive music playlist. Add songs, 
+            reorder them, and enjoy a personalized listening experience!
+        </p>
 
-        <!-- Just link to playlist.html after submit -->
         <form id="signupForm" action="playlist.html" method="get">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">Sign Up</button>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            <input type="password" id="password" name="password" placeholder="Create a password" required>
+            <button type="submit">Sign Up &amp; Start</button>
         </form>
     </div>
 
