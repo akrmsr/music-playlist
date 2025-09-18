@@ -1,142 +1,151 @@
-/* --- Styles for Playlist Page and General Layout --- */
+/* === Global Styles === */
+:root {
+    --primary: #6c63ff;        /* vibrant purple */
+    --secondary: #ff6f61;      /* coral red */
+    --accent: #00c9a7;         /* teal accent */
+    --background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+    --card-bg: rgba(255,255,255,0.95);
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-    color: #333;
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    background: var(--background);
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
+    color: #333;
 }
 
-.container {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* === Shared Card Container === */
+.container, .signup-container {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     width: 90%;
     max-width: 600px;
-}
-
-h1 {
     text-align: center;
-    color: #1a73e8;
+    animation: fadeIn 0.8s ease;
 }
 
-.controls, #addSongForm {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+/* === Typography === */
+h1 {
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
-input[type="text"] {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+h3 {
+    color: var(--secondary);
+    margin-top: 1.5rem;
+}
+
+p.description {
+    color: #555;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+
+/* === Inputs & Buttons === */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    border: 2px solid #ddd;
+    margin-bottom: 1rem;
+    transition: border 0.3s;
+    font-size: 1rem;
+}
+
+input:focus {
+    border-color: var(--primary);
+    outline: none;
 }
 
 button {
-    padding: 10px 15px;
+    padding: 0.8rem 1.5rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.8rem;
+    background: var(--primary);
+    color: #fff;
+    font-size: 1rem;
     cursor: pointer;
-    background-color: #1a73e8;
-    color: white;
+    transition: transform 0.2s, background 0.3s;
 }
 
 button:hover {
-    opacity: 0.9;
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+/* === Playlist Specific === */
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #playlist {
     list-style: none;
     padding: 0;
-    margin-bottom: 20px;
+    margin: 1rem 0;
 }
 
 .playlist-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    transition: background-color 0.2s;
+    background: #f5f5f5;
+    margin: 0.4rem 0;
+    padding: 0.7rem 1rem;
+    border-radius: 0.8rem;
+    transition: background 0.3s;
 }
 
 .playlist-item:hover {
-    background-color: #f9f9f9;
+    background: #eaeaea;
 }
 
 .playlist-item.playing {
-    background-color: #e6f3ff;
+    background: var(--accent);
+    color: #fff;
     font-weight: bold;
-    border-left: 5px solid #1a73e8;
 }
 
 .playlist-item button {
     background: transparent;
-    color: #e74c3c;
     border: none;
     font-size: 1.2rem;
-    padding: 5px;
+    cursor: pointer;
 }
 
 .playlist-item button:hover {
-    opacity: 0.7;
-}
-
-.now-playing-section {
-    margin-top: 20px;
+    color: var(--secondary);
 }
 
 .progress-container {
-    background-color: #e0e0e0;
-    border-radius: 5px;
-    height: 10px;
+    background: #e0e0e0;
+    border-radius: 0.8rem;
+    height: 12px;
+    overflow: hidden;
+    margin-top: 10px;
 }
 
 .progress-bar {
-    background-color: #1a73e8;
+    background: var(--secondary);
     height: 100%;
     width: 0%;
     transition: width 0.1s linear;
 }
 
-#shuffleBtn {
-    background-color: #34a853;
-}
-
-/* --- New Styles for Sign-Up Page --- */
-.signup-container {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-}
-
-.signup-container h1 {
-    margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-.signup-container input {
-    width: calc(100% - 20px);
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-.signup-container button {
-    width: 100%;
-    margin-top: 10px;
+/* === Animations === */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to   {opacity: 1; transform: translateY(0);}
 }
